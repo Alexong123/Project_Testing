@@ -17,12 +17,12 @@ import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var newRecyclerView: RecyclerView
-    private lateinit var newArrayList: ArrayList<Company>
-    private lateinit var tempArrayList: ArrayList<Company>
-    lateinit var imageId:Array<Int>
-    lateinit var heading:Array<String>
-    lateinit var news:Array<String>
+//    private lateinit var newRecyclerView: RecyclerView
+//    private lateinit var newArrayList: ArrayList<Company>
+//    private lateinit var tempArrayList: ArrayList<Company>
+//    lateinit var imageId:Array<Int>
+//    lateinit var heading:Array<String>
+//    lateinit var news:Array<String>
     private lateinit var binding:ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,52 +33,52 @@ class MainActivity : AppCompatActivity() {
 //        setContentView(R.layout.activity_main)
         setUpTabBar()
 
-        imageId= arrayOf(
-            R.drawable.company_logo_1,
-            R.drawable.company_logo_2,
-            R.drawable.company_logo_3,
-            R.drawable.company_logo_4,
-            R.drawable.company_logo_5,
-            R.drawable.company_logo_6,
-            R.drawable.company_logo_7,
-            R.drawable.company_logo_8,
-            R.drawable.company_logo_9,
-            R.drawable.company_logo_10
-        )
-
-        heading = arrayOf(
-            "Candidate Biden Called Saudi Arable a Pareft eaft.",
-            "The definitive text on the healing powers of the mind/body connection.",
-            "This is the definitive book on mindfulness from the beloved Zen master.",
-            "A timeless classic in personal development.",
-            "The definitive text on the healing powers of the mind/body connection.",
-            "The definitive text on the healing powers of the mind/body connection.",
-            "The definitive text on the healing powers of the mind/body connection.",
-            "The definitive text on the healing powers of the mind/body connection.",
-            "The definitive text on the healing powers of the mind/body connection.",
-            "The definitive text on the healing powers of the mind/body connection."
-        )
-
-        news= arrayOf(
-            getString(R.string.news_a),
-            getString(R.string.news_b),
-            getString(R.string.news_c),
-            getString(R.string.news_d),
-            getString(R.string.news_e),
-            getString(R.string.news_f),
-            getString(R.string.news_g),
-            getString(R.string.news_h),
-            getString(R.string.news_i),
-            getString(R.string.news_j)
-        )
-
-        newRecyclerView=findViewById(R.id.recyclerView)
-        newRecyclerView.layoutManager=LinearLayoutManager(this)
-        newRecyclerView.setHasFixedSize(true)
-
-        newArrayList= arrayListOf<Company>()
-        tempArrayList= arrayListOf<Company>()
-        getUserdata()
+//        imageId= arrayOf(
+//            R.drawable.company_logo_1,
+//            R.drawable.company_logo_2,
+//            R.drawable.company_logo_3,
+//            R.drawable.company_logo_4,
+//            R.drawable.company_logo_5,
+//            R.drawable.company_logo_6,
+//            R.drawable.company_logo_7,
+//            R.drawable.company_logo_8,
+//            R.drawable.company_logo_9,
+//            R.drawable.company_logo_10
+//        )
+//
+//        heading = arrayOf(
+//            "Candidate Biden Called Saudi Arable a Pareft eaft.",
+//            "The definitive text on the healing powers of the mind/body connection.",
+//            "This is the definitive book on mindfulness from the beloved Zen master.",
+//            "A timeless classic in personal development.",
+//            "The definitive text on the healing powers of the mind/body connection.",
+//            "The definitive text on the healing powers of the mind/body connection.",
+//            "The definitive text on the healing powers of the mind/body connection.",
+//            "The definitive text on the healing powers of the mind/body connection.",
+//            "The definitive text on the healing powers of the mind/body connection.",
+//            "The definitive text on the healing powers of the mind/body connection."
+//        )
+//
+//        news= arrayOf(
+//            getString(R.string.news_a),
+//            getString(R.string.news_b),
+//            getString(R.string.news_c),
+//            getString(R.string.news_d),
+//            getString(R.string.news_e),
+//            getString(R.string.news_f),
+//            getString(R.string.news_g),
+//            getString(R.string.news_h),
+//            getString(R.string.news_i),
+//            getString(R.string.news_j)
+//        )
+//
+//        newRecyclerView=findViewById(R.id.recyclerView)
+//        newRecyclerView.layoutManager=LinearLayoutManager(this)
+//        newRecyclerView.setHasFixedSize(true)
+//
+//        newArrayList= arrayListOf<Company>()
+//        tempArrayList= arrayListOf<Company>()
+//        getUserdata()
 
 
     }
@@ -118,30 +118,30 @@ class MainActivity : AppCompatActivity() {
 //        return super.onCreateOptionsMenu(menu)
 //    }
 
-    private fun getUserdata() {
-        for (i in imageId.indices){
-            val company=Company(imageId[i],heading[i])
-            newArrayList.add(company)
-        }
-
-//        tempArrayList.addAll(newArrayList)
+//    private fun getUserdata() {
+//        for (i in imageId.indices){
+//            val company=Company(imageId[i],heading[i])
+//            newArrayList.add(company)
+//        }
 //
-//        val adapter = Notification_Fragment(tempArrayList)
-
-        newRecyclerView.adapter=NotificationAdapter(newArrayList)
-//        adapter.setOnItemClickListener(object : Notification_Fragment.onItemClickListener{
-//            override fun onItemClick(position: Int) {
-//                //Toast.makeText(this@MainActivity,"You clicked in item no. $position",Toast.LENGTH_SHORT).show()
+////        tempArrayList.addAll(newArrayList)
+////
+////        val adapter = Notification_Fragment(tempArrayList)
 //
-//                val intent = Intent(this@MainActivity,NewsActivity::class.java)
-//                intent.putExtra("heading",newArrayList[position].heading)
-//                intent.putExtra("imageId",newArrayList[position].titleImage)
-//                intent.putExtra("news",news[position])
-//                startActivity(intent)
-//            }
-//
-//        })
-    }
+//        newRecyclerView.adapter=NotificationAdapter(newArrayList)
+////        adapter.setOnItemClickListener(object : Notification_Fragment.onItemClickListener{
+////            override fun onItemClick(position: Int) {
+////                //Toast.makeText(this@MainActivity,"You clicked in item no. $position",Toast.LENGTH_SHORT).show()
+////
+////                val intent = Intent(this@MainActivity,NewsActivity::class.java)
+////                intent.putExtra("heading",newArrayList[position].heading)
+////                intent.putExtra("imageId",newArrayList[position].titleImage)
+////                intent.putExtra("news",news[position])
+////                startActivity(intent)
+////            }
+////
+////        })
+//    }
 
 
     private fun setUpTabBar() {

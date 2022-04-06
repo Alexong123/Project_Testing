@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 
-class NotificationAdapter(private val newsList:ArrayList<Company>): RecyclerView.Adapter<NotificationAdapter.MyViewHolder>() {
+class NotificationAdapter(private val companyList:ArrayList<Company>): RecyclerView.Adapter<NotificationAdapter.MyViewHolder>() {
 
     private lateinit var mListener:onItemClickListener
 
@@ -26,13 +26,13 @@ class NotificationAdapter(private val newsList:ArrayList<Company>): RecyclerView
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentItem=newsList[position]
+        val currentItem=companyList[position]
         holder.titleImage.setImageResource(currentItem.titleImage)
         holder.tvHeading.text=currentItem.heading
     }
 
     override fun getItemCount(): Int {
-        return newsList.size
+        return companyList.size
     }
 
     //to insert the post detail

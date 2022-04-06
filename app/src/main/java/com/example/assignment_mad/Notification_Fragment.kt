@@ -27,6 +27,7 @@ class Notification_Fragment : Fragment( ) {
     lateinit var news:Array<String>
 
 
+
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerView.Adapter<NotificationAdapter.MyViewHolder>? = null
 
