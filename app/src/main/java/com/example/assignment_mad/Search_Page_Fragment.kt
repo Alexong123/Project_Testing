@@ -2,14 +2,17 @@ package com.example.assignment_mad
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.*
+import android.widget.ArrayAdapter
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.assignment_mad.databinding.FragmentSearchPageBinding
 import kotlinx.android.synthetic.main.fragment_notification_.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Search_Page_Fragment : Fragment() {
 
@@ -24,6 +27,21 @@ class Search_Page_Fragment : Fragment() {
     lateinit var salary:Array<String>
     lateinit var news:Array<String>
 
+    private var _binding:FragmentSearchPageBinding?=null
+    private val binding get()=_binding!!
+
+    override fun onResume() {
+        super.onResume()
+        val places=resources.getStringArray(R.array.place)
+        val arrayAdapter=ArrayAdapter(requireContext(),R.layout.dropdown_item,places)
+
+        val jobs=resources.getStringArray(R.array.job)
+        val arrayAdapter2=ArrayAdapter(requireContext(),R.layout.dropdown_item,jobs)
+
+        binding.autoCompleteTextView.setAdapter(arrayAdapter)
+        binding.autoCompleteTextView2.setAdapter(arrayAdapter2)
+    }
+
 
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerView.Adapter<Search_Page_Adapter.MyViewHolder>? = null
@@ -32,18 +50,24 @@ class Search_Page_Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var views =inflater.inflate(R.layout.fragment_search__page_, container, false)
+        _binding= FragmentSearchPageBinding.inflate(inflater,container,false)
+        val views=binding.root
+        //val views =inflater.inflate(R.layout.fragment_search__page_, container, false)
         newRecyclerView=views.findViewById(R.id.recyclerView_Search)
 
-        // Inflate the layout for this fragment
-        return views
+        return binding.root
 
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding=null
     }
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(itemView, savedInstanceState)
+        setHasOptionsMenu(true)
 
         imageId= arrayOf(
             R.drawable.company_logo_1,
@@ -160,6 +184,44 @@ class Search_Page_Fragment : Fragment() {
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        inflater.inflate(R.menu.menu,menu)
+        val item=menu?.findItem(R.id.search_action)
+        val searchView=item?.actionView as SearchView
+        searchView.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                tempArrayList.clear()
+                val searchText= newText!!.lowercase(Locale.getDefault())
+                if (searchText.isNotEmpty()){
+                    newArrayList.forEach{
+                        if (it.job_name.lowercase(Locale.getDefault()).contains(searchText)){
+                            tempArrayList.add(it)
+                        }
+                    }
+
+                    newRecyclerView.adapter!!.notifyDataSetChanged()
+                }else{
+                    tempArrayList.clear()
+                    tempArrayList.addAll(newArrayList)
+                    newRecyclerView.adapter!!.notifyDataSetChanged()
+                }
+
+
+                return false
+            }
+
+        })
+
+
+        return super.onCreateOptionsMenu(menu,inflater)
+    }
+
 
     private fun getUserdata() {
         for (i in imageId.indices){
@@ -167,11 +229,9 @@ class Search_Page_Fragment : Fragment() {
             newArrayList.add(companySearch)
         }
 
-//        tempArrayList.addAll(newArrayList)
-//
-//        val adapter = Search_Page_Adapter(tempArrayList)
+        tempArrayList.addAll(newArrayList)
 
-        var adapter=Search_Page_Adapter(newArrayList)
+        val adapter=Search_Page_Adapter(tempArrayList)
         adapter.setOnItemClickListener(object :Search_Page_Adapter.onItemClickListener{
             override fun onItemClick(position: Int) {
                 Toast.makeText(context,"You clicked in item no . $position",Toast.LENGTH_SHORT).show()

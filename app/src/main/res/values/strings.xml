@@ -105,4 +105,36 @@
         Only Kota Kinabalu, with 97 cases, saw a notable increase from Saturday.
         A total of 242 or 98.77% of the new patients were under Category 1 and 2, he said.
     </string>
+
+    <string-array name="place">
+        <item>All</item>
+        <item>Johor</item>
+        <item>Kedah</item>
+        <item>Kelantan</item>
+        <item>Malacca</item>
+        <item>Negeri Sembilan</item>
+        <item>Pahang</item>
+        <item>Perak</item>
+        <item>Perlis</item>
+        <item>Sabah</item>
+        <item>Sarawak</item>
+        <item>Selangor</item>
+        <item>Terengganu</item>
+        <item>Kuala Lumpur</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="job">
+        <item>All</item>
+        <item>Accounting</item>
+        <item>Sales</item>
+        <item>Arts</item>
+        <item>Services</item>
+        <item>Hotel</item>
+        <item>Education</item>
+        <item>Computer</item>
+        <item>Engineering</item>
+        <item>Others</item>
+    </string-array>
+
 </resources>
