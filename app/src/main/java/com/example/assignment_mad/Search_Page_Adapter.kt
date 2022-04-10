@@ -7,11 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 
-
-
-class NotificationAdapter(private val companysList:ArrayList<Company>):RecyclerView.Adapter<NotificationAdapter.MyViewHolder>() {
-
-
+class Search_Page_Adapter(private val companysList:ArrayList<Company_Search>):RecyclerView.Adapter<Search_Page_Adapter.MyViewHolder>() {
 
     private var mListener:onItemClickListener?=null
 
@@ -25,14 +21,20 @@ class NotificationAdapter(private val companysList:ArrayList<Company>):RecyclerV
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
-        val itemView=LayoutInflater.from(parent.context).inflate(R.layout.list_item,parent,false)
+        val itemView=LayoutInflater.from(parent.context).inflate(R.layout.list_item_search,parent,false)
         return MyViewHolder(itemView,mListener)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem=companysList[position]
         holder.titleImage.setImageResource(currentItem.titleImage)
-        holder.tvHeading.text=currentItem.heading
+        holder.job_name.text=currentItem.job_name
+        holder.save_icon.setImageResource(currentItem.save_icon)
+        holder.company_name.text=currentItem.company_name
+        holder.place.text=currentItem.place
+        holder.salary.text=currentItem.salary
+
+
     }
 
     override fun getItemCount(): Int {
@@ -40,12 +42,14 @@ class NotificationAdapter(private val companysList:ArrayList<Company>):RecyclerV
     }
 
     //to insert the post detail
-
-
     class MyViewHolder(itemView: View,listener: onItemClickListener?):RecyclerView.ViewHolder(itemView){
 
-        val titleImage:ShapeableImageView=itemView.findViewById(R.id.title_image)
-        val tvHeading: TextView =itemView.findViewById(R.id.tvHeading)
+        val titleImage:ShapeableImageView=itemView.findViewById(R.id.title_image2)
+        val job_name:TextView=itemView.findViewById(R.id.job_name)
+        val save_icon:ShapeableImageView=itemView.findViewById(R.id.save_icon)
+        val company_name:TextView=itemView.findViewById(R.id.company_name)
+        val place:TextView=itemView.findViewById(R.id.detail_place)
+        val salary:TextView=itemView.findViewById(R.id.detail_salary)
 
         init {
             itemView.setOnClickListener{

@@ -7,10 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 
-
-
-class NotificationAdapter(private val companysList:ArrayList<Company>):RecyclerView.Adapter<NotificationAdapter.MyViewHolder>() {
-
+class Save_Job_Adapter(private val companysList:ArrayList<Company>): RecyclerView.Adapter<Save_Job_Adapter.MyViewHolder>() {
 
 
     private var mListener:onItemClickListener?=null
@@ -25,7 +22,7 @@ class NotificationAdapter(private val companysList:ArrayList<Company>):RecyclerV
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
-        val itemView=LayoutInflater.from(parent.context).inflate(R.layout.list_item,parent,false)
+        val itemView= LayoutInflater.from(parent.context).inflate(R.layout.list_item_save,parent,false)
         return MyViewHolder(itemView,mListener)
     }
 
@@ -42,9 +39,9 @@ class NotificationAdapter(private val companysList:ArrayList<Company>):RecyclerV
     //to insert the post detail
 
 
-    class MyViewHolder(itemView: View,listener: onItemClickListener?):RecyclerView.ViewHolder(itemView){
+    class MyViewHolder(itemView: View, listener: onItemClickListener?):RecyclerView.ViewHolder(itemView){
 
-        val titleImage:ShapeableImageView=itemView.findViewById(R.id.title_image)
+        val titleImage: ShapeableImageView =itemView.findViewById(R.id.title_image)
         val tvHeading: TextView =itemView.findViewById(R.id.tvHeading)
 
         init {

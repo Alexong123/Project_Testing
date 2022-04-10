@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="tabBackgroundColor">#EEE</color>
     <color name="blue">#00F</color>
+    <color name="red">#FF0000</color>
     <color name="darkGray">#222</color>
 
     <color name="underline">#DBD6D6</color>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_editor_absoluteX="1dp"
+    app:layout_editor_absoluteY="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Company_Detail_Page">
+
+        <TextView
+            android:id="@+id/heading"
+            android:elevation="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Candidate Biden Called Saudi Arable a Pareft eaft."
+            android:textColor="@color/black"
+            android:textSize="26dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+        <ImageView
+            android:layout_width="400dp"
+            android:layout_height="200dp"
+            android:id="@+id/image_heading"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/heading"
+            app:shapeAppearanceOverlay="@style/RoundCorner"
+
+            android:src="@drawable/company_logo_1"/>
+
+        <TextView
+            android:id="@+id/news"
+            android:elevation="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="SONGKHLA: The reopening of two Thailand-Malaysia land border gates on April 1 will comply with standard operating procedures (SOP) to ensure that the safety and health of tourists and locals are always protected.
+        Deputy Governor of Songkhla province, Amphon Pongsuwan, said the two border gates of Sadao (Songkhla province)-Bukit Kayu Hitam (Kedah) and Wang Prachan (Satun)-Wang Kelian (Perlis) will be reopened to fully vaccinated tourists from April 1.
+        He said all tourists, who will be coming through the land border gate under the “Test Go” programme, will have to apply online for the “Thailand Pass” at least seven days before travel.
+        Under the programme, travellers also need to book a designated hotel in advance, as well as perform an RT-PCR test on the first day of arrival and a self-antigen test on the fifth day."
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_heading"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#391414"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/news" />
+
+        <Button
+            android:id="@+id/apply_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apply"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/news" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

@@ -1,11 +1,13 @@
 package com.example.assignment_mad
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
@@ -26,8 +28,6 @@ class Notification_Fragment : Fragment( ) {
     lateinit var heading:Array<String>
     lateinit var news:Array<String>
 
-
-
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerView.Adapter<NotificationAdapter.MyViewHolder>? = null
 
@@ -35,15 +35,18 @@ class Notification_Fragment : Fragment( ) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        var views =inflater.inflate(R.layout.fragment_notification_, container, false)
+        newRecyclerView=views.findViewById(R.id.recyclerView)
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notification_, container, false)
+        return views
 
 
     }
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
+
+        super.onViewCreated(itemView, savedInstanceState)
 
         imageId= arrayOf(
             R.drawable.company_logo_1,
@@ -85,26 +88,29 @@ class Notification_Fragment : Fragment( ) {
         )
 
 
+
+
         newArrayList= arrayListOf<Company>()
         tempArrayList= arrayListOf<Company>()
         getUserdata()
 
-        super.onViewCreated(itemView, savedInstanceState)
 
-        newRecyclerView.apply {
-            layoutManager=LinearLayoutManager(activity)
-            newRecyclerView=findViewById(R.id.recyclerView)
-            newRecyclerView.setHasFixedSize(true)
 
-        }
+//        newRecyclerView.apply {
+//            layoutManager=LinearLayoutManager(activity)
+//            newRecyclerView.setHasFixedSize(true)
+//
+//        }
+//
+//
+//        recyclerView.apply {
+//            // set a LinearLayoutManager to handle Android
+//            // RecyclerView behavior
+//            layoutManager = LinearLayoutManager(activity)
+//            // set the custom adapter to the RecyclerView
+//            adapter = NotificationAdapter(newArrayList)
+//        }
 
-        recyclerView.apply {
-            // set a LinearLayoutManager to handle Android
-            // RecyclerView behavior
-            layoutManager = LinearLayoutManager(activity)
-            // set the custom adapter to the RecyclerView
-            adapter = NotificationAdapter(newArrayList)
-        }
 
 
     }
@@ -120,19 +126,22 @@ class Notification_Fragment : Fragment( ) {
 //
 //        val adapter = Notification_Fragment(tempArrayList)
 
-        newRecyclerView.adapter=NotificationAdapter(newArrayList)
-//        adapter.setOnItemClickListener(object : Notification_Fragment.onItemClickListener{
-//            override fun onItemClick(position: Int) {
-//                //Toast.makeText(this@MainActivity,"You clicked in item no. $position",Toast.LENGTH_SHORT).show()
-//
-//                val intent = Intent(this@MainActivity,NewsActivity::class.java)
-//                intent.putExtra("heading",newArrayList[position].heading)
-//                intent.putExtra("imageId",newArrayList[position].titleImage)
-//                intent.putExtra("news",news[position])
-//                startActivity(intent)
-//            }
-//
-//        })
+        var adapter=NotificationAdapter(newArrayList)
+        adapter.setOnItemClickListener(object :NotificationAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                Toast.makeText(context,"You clicked in item no . $position",Toast.LENGTH_SHORT).show()
+
+                val intent= Intent(context,Notification_Detail::class.java)
+                intent.putExtra("name",newArrayList[position].heading)
+                intent.putExtra("imageId",newArrayList[position].titleImage)
+                intent.putExtra("news",news[position])
+                startActivity(intent)
+            }
+        })
+
+        newRecyclerView.layoutManager=LinearLayoutManager(activity)
+        newRecyclerView.setHasFixedSize(true)
+        newRecyclerView.adapter=adapter
     }
 
 
